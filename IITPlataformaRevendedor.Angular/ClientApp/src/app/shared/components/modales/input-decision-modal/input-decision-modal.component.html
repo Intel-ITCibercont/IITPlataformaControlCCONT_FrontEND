@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div  cdkDrag
+        cdkDragRootElement=".cdk-overlay-pane"
+        cdkDragHandle
+        class="row">
+    <div class="col-10 col-md-10 p-3 bg-dark text-light titulo_modal">
+      AVISO
+    </div>
+    <div class="col-2 col-md-2 py-3 py-md-auto cursor-pointer bg-dark text-light" (click)="closeModal()">
+      <a class="d-flex justify-content-end"><i class="material-icons">close</i></a>
+  </div>
+  </div>
+  <div class="row m-2">
+    <div class="col-12 p-1">      
+      <p class="text-center text-break text-message">{{data.mensaje}}</p>
+    </div>
+    <div class="col-12 p-1">
+      <mat-form-field appearance="outline"
+          class="block small">
+          <mat-label>{{data.label}}</mat-label>
+          <input  #inputMotivo
+                  matInput
+                  tabindex="-1"
+                  [formControl]="motivoDeDecision"
+                  [placeholder]="data.label"
+                  type="text"
+                  class="block small"
+                  onClick="this.select()">
+      </mat-form-field>
+  </div>
+  </div>
+ 
+  <div class="row m-2">
+    <div class="offset-3 col-6 col-md-6 p-1">
+      <button mat-raised-button color="primary" class="btn-block btn-success" (click)="aceptar()">Aceptar</button>
+    </div>
+   
+  </div>
+  <app-soporte-footer  [mensajeAMostrar]="true?_mensajeInformativo:_mensajeAyuda" [numeroDeSoporte]="_contactoSoporte1" ></app-soporte-footer>
+  
+</div>

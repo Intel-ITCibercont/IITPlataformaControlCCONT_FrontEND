@@ -1,0 +1,39 @@
+<div class="row px-3"
+     [formGroup]="parts"
+     [attr.aria-describedby]="_formField?.getLabelId()"
+     (focusin)="onFocusIn($event)"
+     (focusout)="onFocusOut($event)"> 
+
+     <div class="col-8 px-0">
+        <button *ngFor="let denominacion of listaDeDenominacion"
+                class=" bg-blue m-1 " 
+                [ngClass]="{'seleccion-rapida-active':!validarEstadoHabilitado(denominacion.valor),
+                              'seleccion-rapida-disabled':validarEstadoHabilitado(denominacion.valor)}"
+                mat-raised-button
+                color="primary"
+                matTooltip="valor"
+                type="button"
+                [disabled]="this.validarEstadoHabilitado(denominacion.valor)"
+                (click)="this.registarDenominacion(denominacion.valor)">
+                <span class="text-center">{{denominacion.valor}}</span>
+        </button>
+     </div>
+     <div class="col-4 px-0 my-auto">
+            <mat-form-field appearance="outline"
+                    class="block small">
+                    <mat-label>Dinero recibido</mat-label>
+                    <input  
+                        matInput
+                        color="accent"
+                        type ="number"
+                        formControlName="nominal"
+                        style="text-align:right;"
+                        aria-label="Nominal"
+                        (input)="_handleInput(parts.controls.nominal)"
+                        #nominalInput 
+                        DecimalFormatterDirective>
+            </mat-form-field>
+           
+     </div>
+   
+</div>

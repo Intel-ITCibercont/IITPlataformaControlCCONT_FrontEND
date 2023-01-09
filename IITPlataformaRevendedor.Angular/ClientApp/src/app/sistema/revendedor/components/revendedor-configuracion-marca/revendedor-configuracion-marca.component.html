@@ -1,0 +1,95 @@
+<ngx-spinner [name]="'configuracion-marca'" type="null">
+    <app-loading></app-loading>
+</ngx-spinner>
+
+<app-form-header  (closeDialog)="closeWindow()" *ngIf="this.entidadActual" [title] ="'CONFIGURACION DE LA MARCA'" [icon]="'fa fa-tasks'" [dialogMode]='true'></app-form-header>
+<div class="container-fluid" *ngIf="this.entidadActual">
+    <div class="row">
+        <div class="col-12">
+             <form [formGroup]="formulario"
+                    autocomplete="off"
+                    novalidate="novalidate"
+                    #formDirective="ngForm">
+                <div class="row">   
+                    <div class="col-12  px-1 py-4  d-flex justify-content-center">
+                        <div class="d-flex contenedor-imagen-logo border-rounded">
+                            <img    src={{imgLogo}}
+                                    id="logoImage"
+                                    class="img-zoom ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|} m-auto">
+                            <input  type="file"
+                                    id="upload"
+                                    class="btn-upload"
+                                    hidden
+                                    accept="image/x-png"
+                                    (change)="cargarImagen($event)">
+                            <label  for="upload"
+                                    class="btn-upload">
+                                <mat-icon role="button">upload</mat-icon>
+                            </label>
+                            <label  class="btn-delete" (click)="eliminarImagen()">
+                                <mat-icon role="button">delete</mat-icon>
+                            </label>
+                            
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field appearance="outline"
+                                        class="block small">
+                                        <mat-label>Color Principal</mat-label>
+                                        <input  matInput
+                                                formControlName="colorPaletaPrincipal"
+                                                type="color"
+                                                placeholder="Elija el Color Principal">
+
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field appearance="outline"
+                                        class="block small">
+                                        <mat-label>Color Secundario</mat-label>
+                                        <input  matInput
+                                                formControlName="colorPaletaSecundario"
+                                                type="color"
+                                                placeholder="Elija el Color Secundario">
+
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field appearance="outline"
+                                        class="block small">
+                                        <mat-label>Color Ternario</mat-label>
+                                        <input  matInput
+                                                formControlName="colorPaletaTercerario"
+                                                type="color"
+                                                placeholder="Elija el Color Ternario">
+
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field appearance="outline"
+                                        class="block small">
+                                        <mat-label>Color Cuaternario</mat-label>
+                                        <input  matInput
+                                                formControlName="colorPaletaCuaternario"
+                                                type="color"
+                                                placeholder="Elija el Color Cuarternario">
+
+                        </mat-form-field>
+                    </div>
+                </div>
+             </form>
+        </div>
+    </div>
+    <div class="row py-2">
+         <div class="col-12">
+            <button mat-raised-button
+                    color="primary" 
+                    class ="block small" 
+                    type="submit"
+                    (click)="guardarCambios()">
+                    <mat-icon class="mr-0 mr-md-2 mr-lg-3">save</mat-icon>
+                    <p class="d-none d-md-inline">Guardar</p>
+            </button>
+         </div>
+    </div>
+</div>

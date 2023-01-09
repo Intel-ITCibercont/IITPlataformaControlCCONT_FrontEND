@@ -1,0 +1,148 @@
+<!-- #region Cabecera -->
+<app-form-header [title]="'EMPRESA'" [icon]="'fa fa-briefcase'" (closeDialog)="closeWindow($event)"></app-form-header>
+<!-- #endregion Cabecera -->
+
+<div class="container-fluid">
+    <div class="row m-2">
+        <div class="col">
+            <form [formGroup]="configuracionForm" #formDirective="ngForm" autocomplete="off" novalidate="novalidate">
+
+                <div class="row pb-1">
+                    <div class="col-12 p-1">
+                        <mat-form-field appearance="outline" class="block small">
+                            <mat-label>RUC</mat-label>
+                            <input matInput id="RUC" formControlName="ruc" type="text" maxlength="11" onClick="this.select()" placeholder="Ingrese RUC de la empresa" NumberType>
+                            <button mat-raised-button type="button" *ngIf="!cargando_asincrono" class="btn-buscar px-0" (click)="buscarRuc()">
+                                    <mat-icon   class="d-inline" 
+                                                color="primary">cloud_download</mat-icon>
+                                    <span class="d-sm-inline small">Buscar SUNAT</span>
+                            </button>
+                            <!-- [errorStateMatcher]="matcher" -->
+                        </mat-form-field>
+                        <app-cargando *ngIf="cargando_asincrono" class="cargando-flotante-input" [escala]="'x1'" [mostrarTexto]=false>
+                        </app-cargando>
+                        <div *ngIf="ruc.invalid && (ruc.dirty || ruc.touched)">
+                            <div class="error-message" *ngIf="ruc.errors.required">
+                                Este campo es requerido.
+                            </div>
+                            <div class="error-message" *ngIf="ruc.errors.RUC">
+                                RUC no válido.
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-md-12 p-1">
+                        <mat-form-field appearance="outline" class="block small">
+                            <mat-label>Razón social</mat-label>
+                            <input matInput formControlName="razonSocial" type="text" maxlength="100" placeholder="Escriba la razón social de la empresa" onClick="this.setSelectionRange(0, this.value.length)">
+                            <!-- [errorStateMatcher]="matcher" -->
+                        </mat-form-field>
+                        <div *ngIf="razonSocial.invalid && (razonSocial.dirty || razonSocial.touched)">
+                            <div class="error-message" *ngIf="razonSocial.errors.required || razonSocial.errors.sinEspaciosAlInicioYFinal">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 p-1">
+                        <mat-form-field appearance="outline" class="block small">
+                            <mat-label>Nombre comercial</mat-label>
+                            <input matInput formControlName="nombreComercial" type="text" maxlength="50" placeholder="Escriba el nombre comercial de la empresa" onClick="this.setSelectionRange(0, this.value.length)">
+                            <!-- [errorStateMatcher]="matcher" -->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 p-1">
+                        <mat-form-field appearance="outline" class="block small">
+                            <mat-label>Urbanización</mat-label>
+                            <input matInput formControlName="urbanizacion" type="text" placeholder="Escriba la urbanización de la empresa" onClick="this.setSelectionRange(0, this.value.length)">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 p-1">
+                        <mat-form-field appearance="outline" class="block small">
+                            <mat-label>Dirección</mat-label>
+                            <input (blur)="extraerUbigeoDireccion()" matInput formControlName="direccion" type="text" placeholder="Escriba la dirección de la empresa" onClick="this.setSelectionRange(0, this.value.length)">
+                        </mat-form-field>
+                        <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+                            <div class="error-message" *ngIf="direccion.errors.required || direccion.errors.sinEspaciosAlInicioYFinal">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 p-1">
+                        <mat-form-field appearance="outline" class="block small">
+                            <mat-label>Región</mat-label>
+                            <mat-select formControlName="region" (selectionChange)="valoresDeUbigeoProvincia($event.value, true)">
+                                <mat-option [value]="region.ubigeo" *ngFor="let region of regiones">
+                                    {{region.nombre}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="region.invalid && (region.dirty || region.touched)">
+                            <div class="error-message" *ngIf="region.errors.required || region.errors.sinEspaciosAlInicioYFinal">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 p-1">
+                        <mat-form-field appearance="outline" class="block small">
+                            <mat-label>Provincia</mat-label>
+                            <mat-select formControlName="provincia" (selectionChange)="valoresDeUbigeoDistrito($event.value, true)">
+                                <mat-option [value]="provincia.ubigeo" *ngFor="let provincia of provincias">
+                                    {{provincia.nombre}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="provincia.invalid && (provincia.dirty || provincia.touched)">
+                            <div class="error-message" *ngIf="provincia.errors.required || provincia.errors.sinEspaciosAlInicioYFinal">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 p-1">
+                        <mat-form-field appearance="outline" class="block small">
+                            <mat-label>Distrito</mat-label>
+                            <mat-select formControlName="distrito" (selectionChange)="valoresDeUbigeoFinal($event.value)">
+                                <mat-option [value]="distrito.ubigeo" *ngFor="let distrito of distritos">
+                                    {{distrito.nombre}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="distrito.invalid && (distrito.dirty || distrito.touched)">
+                            <div class="error-message" *ngIf="distrito.errors.required || distrito.errors.sinEspaciosAlInicioYFinal">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 p-1">
+                        <mat-form-field appearance="outline" class="block small">
+                            <mat-label>Código de ubigeo</mat-label>
+                            <input matInput id="codigoDeUbigeo" readOnly formControlName="codigoDeUbigeo" type="number">
+                        </mat-form-field>
+                        <div *ngIf="codigoDeUbigeo.invalid && (codigoDeUbigeo.dirty || codigoDeUbigeo.touched)">
+                            <div class="error-message" *ngIf="codigoDeUbigeo.errors.required || codigoDeUbigeo.errors.sinEspaciosAlInicioYFinal">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pb-1 d-flex justify-content-end">
+
+                    <button mat-raised-button color="primary" class="small" type="submit" (click)="guardar()">
+                                <mat-icon class="mr-0 mr-md-2 mr-lg-3">save</mat-icon>
+                                <p class="d-none d-md-inline">Guardar</p>
+                        </button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- #region Formulario -->
+
+<!-- #endregion Formulario -->
+
+<!-- #region Cargando -->
+<ngx-spinner [name]="'empresa'" type="null">
+    <app-loading></app-loading>
+</ngx-spinner>
+<!-- #endregion Cargando -->

@@ -1,0 +1,5 @@
+:host::ng-deep .dx-command-select {  
+    width: 30px!important;  
+    min-width: 30px!important;  
+ } 
+ 

@@ -1,0 +1,24 @@
+<div class="row-fluid"
+     [formGroup]="parts"
+     [attr.aria-labelledby]="_formField?.getLabelId()"
+     (focusin)="onFocusIn($event)"
+     (focusout)="onFocusOut($event)">
+  <input class="input-element mr-1 col-2 p-0"
+         formControlName="serie" size="4"
+         maxLength="4"
+         aria-label="Serie"
+         type="text"
+         (input)="_handleInput(parts.controls.serie, numero)"
+         #serie>
+  <span class="input-spacer">&ndash;</span>
+  <input class="input-element ml-1 col-9 p-0"
+         type ="number"
+         formControlName="numero"
+         maxLength="7"
+         size="7"
+         aria-label="Número"
+         (input)="_handleInput(parts.controls.numero)"
+         (keyup.backspace)="autoFocusPrev(parts.controls.numero, serie)"
+         #numero>
+  
+</div>

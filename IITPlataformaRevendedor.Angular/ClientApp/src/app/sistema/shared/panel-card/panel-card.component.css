@@ -1,0 +1,38 @@
+.card-bg-blue{
+    background-color: #fff;
+    color: #0d55a0;
+    border: solid 1px #0d55a0;
+}
+.card-bg-blue:hover{
+    background-color: #0d55a0;
+    color: #fff;
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 14px 24px rgb(62 57 107 / 10%);
+}
+.card-bg-green{
+    background-color: #fff;
+    color: #17b8ae;
+    border: solid 1px #17b8ae;
+}
+.card-bg-green:hover{
+    background-color: #17b8ae;
+    color: #fff;
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 14px 24px rgb(62 57 107 / 10%);
+}
+.card-panel{
+    transition: all .25s ease;
+    cursor: pointer;
+    padding-right: 6px;
+}
+/* .card-panel-header .mat-card-header-text{
+    margin-top: auto;
+    margin-bottom: auto;
+} */
+
+:host ::ng-deep .card-panel-header .mat-card-header-text{
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+}
+
+

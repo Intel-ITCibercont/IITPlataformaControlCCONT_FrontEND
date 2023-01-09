@@ -1,0 +1,29 @@
+
+.contenedor-pdf-viewer {
+  height: 100vh !important;
+
+}
+
+#cdk-overlay-2{
+  max-width: 100vw !important;
+  height: 100vh !important;
+}
+
+
+::ng-deep .ng2-pdf-viewer-container {
+
+  background-color: #dadada;
+
+}
+
+.btn-create{
+  
+  color: #1772b8
+}
+.btn-create.mat-raised-button{
+  line-height: 26px !important
+}
+.btn-create.mat-raised-button:not([class*='mat-elevation-z']){
+  box-shadow: none !important
+}
+

@@ -1,0 +1,33 @@
+.contenedor-loading{
+    width: 240px;
+}
+
+.loading{
+    display: flex;
+    justify-content: center;
+}
+.loading>img{
+    width: 72%;
+}
+.logo-azul>img{
+    width: 100%;
+}
+
+.logo-azul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mensaje{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header{
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+.telefonos{
+    color: #d1d1d1;
+    font-size: 0.8rem;
+}

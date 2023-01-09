@@ -1,0 +1,20 @@
+:host::ng-deep .dx-command-select {  
+    width: 30px!important;  
+    min-width: 30px!important;  
+} 
+ 
+::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0em !important;
+} 
+
+:host::ng-deep .mat-expansion-panel-header.mat-expanded {
+    height: 40px !important;
+}
+  
+:host::ng-deep .mat-expansion-panel-header {
+    height: 40px !important;
+}
+
+:host::ng-deep .mat-expansion-panel-body {
+    padding: 15px;
+}

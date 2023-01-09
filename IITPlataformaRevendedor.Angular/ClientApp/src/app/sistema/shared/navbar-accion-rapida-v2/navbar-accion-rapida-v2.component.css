@@ -1,0 +1,17 @@
+.btn-quick-access {
+    background-color: #0091ff;
+    color: #ffffff;
+    border: solid 1px #0091ff;
+    border-radius: 6px;
+  }
+  .btn-quick-access:focus{
+    box-shadow: none!important;
+  }
+  .btn-quick-access:hover{
+    background-color: #1772b8;
+    color: #fff;
+  }
+  .quick-access-activo{
+    background-color: #1772b8!important;
+    color: #ffffff!important;
+  }

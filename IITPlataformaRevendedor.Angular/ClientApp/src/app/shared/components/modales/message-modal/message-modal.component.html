@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <div cdkDrag
+       cdkDragRootElement=".cdk-overlay-pane"
+       cdkDragHandle
+       class="row">
+    <div  *ngIf="data.estado" 
+          [ngClass]="{'bg-success': data.estado==true}"
+          class="col-9 col-md-9 p-3 text-light titulo_modal">
+          {{_titulo}}
+    </div>
+    <div  *ngIf="!data.estado"
+          [ngClass]="{'bg-danger': data.estado==false}"
+          class="col-9 col-md-9 p-3 text-light titulo_modal">
+      {{_titulo}}
+    </div>
+    <div class="col-3 col-md-3 py-3 py-md-auto cursor-pointer text-light"
+        (click)="closeDialog()"
+        [ngClass]="{'bg-danger': data.estado==false, 'bg-success': data.estado==true}">
+      <a class="d-flex justify-content-end"><i class="material-icons" >close</i></a>
+    </div>
+
+  </div>
+
+  <div class="row mt-5 mb-5">
+    <div *ngIf="data.arrayMensaje == undefined || _arrayMensaje.length == 0" class="col-12">
+         <!-- [ngClass]="{'text-danger': data.estado==false, 'text-success': data.estado==true}">       -->
+      <p class="text-center text-break text-message">{{data.mensaje}}</p>
+    </div>
+    <div *ngIf="data.arrayMensaje !== undefined && _arrayMensaje.length > 0" class="col-12">
+      <p *ngFor="let item of _arrayMensaje" class="text-center text-break text-message">{{item}}</p>
+    </div>
+        
+  </div>
+  <div class="row my-3 mx-0">
+    <div class="offset-2 col-8 offset-md-3 col-md-6">
+      <button  mat-raised-button 
+               color="primary" 
+               class="btn-block bg-black" tabindex='0' (click)="aceptar()">Aceptar</button>
+    </div>
+  </div>
+  <app-soporte-footer [mensajeAMostrar]="this.data.estado?_mensajeInformativo:_mensajeAyuda" 
+                      [numeroDeSoporte]="_contactoSoporte1">
+  </app-soporte-footer>
+</div>

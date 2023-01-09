@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div cdkDrag
+         cdkDragRootElement=".cdk-overlay-pane"
+         cdkDragHandle
+         class="row">
+      <div  *ngIf="data.status" 
+            [ngClass]="{'bg-success': data.status==true}"
+            class="col-9 p-3 text-light titulo_modal">
+        Correcto
+      </div>
+      <div  *ngIf="!data.status"
+            [ngClass]="{'bg-danger': data.status==false}"
+            class="col-9 p-3 text-light titulo_modal">
+        Error
+      </div>
+      <div class="col-3 col-md-3 py-3 py-md-auto cursor-pointer text-light"
+        (click)="closeDialog()"
+        [ngClass]="{'bg-danger': data.status==false, 'bg-success': data.status==true}">
+      <a class="d-flex justify-content-end"><i class="material-icons" >close</i></a>
+    </div>
+    </div>
+  
+    <div class="row mt-4">
+      <div class="col-12">      
+        <p class="text-center text-message">{{this.data.mensaje.mensajeGenerado}}</p>
+      </div>
+    </div>
+    <app-list-share-buttons [shareLink]="sharelink" ></app-list-share-buttons>
+    <div class="row my-3 mx-0">
+      <div class="offset-3 col-6">
+        <button mat-raised-button class="btn-block bg-black" (click)="aceptar()">Aceptar</button>
+      </div>
+    </div>
+    <app-soporte-footer [mensajeAMostrar]="this.data.status?_mensajeInformativo:_mensajeAyuda" [numeroDeSoporte]="_contactoSoporte1" ></app-soporte-footer>
+  </div>

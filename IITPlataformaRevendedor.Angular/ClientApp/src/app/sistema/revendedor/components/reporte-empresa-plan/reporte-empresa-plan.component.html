@@ -1,0 +1,308 @@
+<!-- #region INICIO título -->
+<app-form-header [title]="'REPORTE DE PLANES'" [dialogMode]="false"></app-form-header>
+<!-- #endregion Titulo-->
+
+<!-- #region INICIO botones expandir -->
+<div class="row my-1 mx-1">
+    <div class="col-7 col-md-8 px-1 pt-1">
+        <button class="ml-1 btn-panel-access" (click)="gestionarVisibilidad('Grupos')" matTooltip="Filtros y agrupaciones">
+                <i class="fa fa-columns fa-2x"></i>
+        </button>
+        <button class="ml-1 btn-panel-access" (click)="gestionarVisibilidad('Imprimible')" matTooltip="Exportación">
+                <i class="fa fa-print fa-2x"></i>
+        </button>
+        <button class="ml-1 btn-panel-access" (click)="gestionarVisibilidad('Busqueda')" matTooltip="Búsqueda">
+            <i class="fa fa-search fa-2x"></i>
+        </button>
+    </div>
+    <div class="col-5 col-md-4 px-1">
+        <mat-form-field appearance="outline" class="block small">
+            <mat-label>Búsqueda</mat-label>
+            <input matInput #busqueda type="text" class="block small" (keyup.enter)="realizarFiltro(busqueda.value)" [readonly]="this.readonlyBusqueda">
+            <button class="border-0 bg-white" mat-icon-button matSuffix (click)="realizarFiltro(busqueda.value)">
+                    <mat-icon matSuffix>search</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <!-- #region INICIO sección búsqueda-->
+    <mat-accordion class="col-12 pt-1 px-1">
+        <mat-expansion-panel *ngIf="showFiltros" [expanded]="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="align-items-centers">
+                    Búsqueda<i class="fa fa-search ml-2" aria-hidden="true"></i>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 col-lg-12 ">
+                    <form novalidate="novalidate" [formGroup]="formularioBusqueda" (ngSubmit)="realizarBusqueda()">
+                        <div class="form-row">
+                            <div class="col-6 col-md-3 col-lg-2  px-1 pb-1">
+                                <mat-form-field appearance="outline" class="block small">
+                                    <mat-label>Fecha Inferior</mat-label>
+                                    <input matInput [max]="fechaSuperior.value" [min]="fechaMinReporteXUsuario" [matDatepicker]="picker" readonly formControlName="fechaInferior">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker color="primary"></mat-datepicker>
+                                    <!--  <mat-hint>Fecha Inferior <i class="fas fa-file-chart-pie"></i></mat-hint> -->
+                                </mat-form-field>
+                                <div *ngIf="fechaInferior.invalid && (fechaInferior.dirty || fechaInferior.touched)" id="">
+                                    <div class="error-message" *ngIf=fechaInferior.errors.required>
+                                        Este campo es requerido.
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2   px-1  pb-1">
+                                <mat-form-field appearance="outline" class="block small">
+                                    <mat-label>Fecha Superior</mat-label>
+                                    <input matInput [min]="fechaInferior.value" [matDatepicker]="picker_1" readonly formControlName="fechaSuperior">
+                                    <mat-datepicker-toggle matSuffix [for]="picker_1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker_1 color="primary"></mat-datepicker>
+                                    <!-- <mat-hint>Fecha Superior <i class="fas fa-file-chart-pie"></i></mat-hint> -->
+                                </mat-form-field>
+                                <div *ngIf="fechaSuperior.invalid && (fechaSuperior.dirty || fechaSuperior.touched)" id="">
+                                    <div class="error-message" *ngIf=fechaSuperior.errors.required>
+                                        Este campo es requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3 col-lg-2 pb-1 my-auto">
+                                <button mat-raised-button color="primary" class="block small m-auto"> <mat-icon>search</mat-icon> &nbsp; Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel *ngIf="showAgrupaciones " [expanded]="true ">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="align-items-centers ">
+                    Filtros y agrupaciones<i class="fa fa-columns ml-2 " aria-hidden="true "></i>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="form-row ">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 px-1 pb-1 ">
+                    <mat-form-field appearance="outline" class="block small ">
+                        <mat-label>Agrupación N°1</mat-label>
+                        <mat-select [(value)]="valueFiltroN1 " (selectionChange)="realizar_Primera_Agrupacion($event) ">
+                            <mat-option>Ninguno</mat-option>
+                            <mat-option [value]="agrupacion.value " *ngFor="let agrupacion of primera_agrupacion">{{agrupacion.nombre}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 px-1 pb-1 ">
+                    <mat-form-field appearance="outline" class="block small ">
+                        <mat-label>Agrupación N°2</mat-label>
+                        <mat-select [(value)]="valueFiltroN2 " (selectionChange)="realizar_Segunda_Agrupacion($event) ">
+                            <mat-option>Ninguno</mat-option>
+                            <mat-option [value]="agrupacion.value " *ngFor="let agrupacion of segunda_agrupacion">{{agrupacion.nombre}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel *ngIf="showImprimible " [expanded]="true ">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="align-items-centers ">
+                    Exportación <i class="fa fa-print ml-2 " aria-hidden="true "></i>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="form-row ">
+                <div class="col-2 px-1 my-auto ">
+                    <div mat-raised-button color="primary " class="small button-style-dx " (click)="exportarAExcel() ">
+                        <i class="fa fa-file-excel-o fa-fw fa-lg "></i> Exportar Excel
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- #endregion FIN sección búsqueda-->
+</div>
+<!-- #endregion FIN botones expandir -->
+<!-- #region Grilla 
+        id:identificador del grid
+        datasource: Origen de datos en array
+        allowColumnReordering: true-Permite ordenar las columnas
+        columnAutoWidth: true-El ancho de las columnas se autoajustan
+        showBorders: true-El grid muestra los bordes-->
+
+<!-- #region INICIO boton de cargando -->
+<!-- <app-cibercont-spinner></app-cibercont-spinner> -->
+<!-- <ngx-spinner [name]=" 'reporte-ventas' " template = "<img src='../../../../../assets/img/Logo.gif' width=80px />" ></ngx-spinner> -->
+<ngx-spinner [name]="'reporte-empresa'" type="null">
+    <app-loading></app-loading>
+</ngx-spinner>
+
+<!-- #endregion FIN boton cargando -->
+<div class="row my-3 mx-1 ">
+    <div class="col-12 justify-content-center px-1">
+        <dx-data-grid #reporte [dataSource]="listaDeReporte" [allowColumnReordering]="true" [columnAutoWidth]="false" [allowColumnResizing]="true" columnResizingMode="widget" [hoverStateEnabled]="true" [showBorders]="true" [height]="'70vh'" [columns]='this.columnasPorDefecto'
+            noDataText='Sin datos disponibles' (onRowPrepared)="colorFila($event, $event.data)">
+
+            <div *dxTemplate="let cellInfo of 'cellTemplateDetalle'" class="text-center px-1">
+                <div class="row mx-1 cont-iconos">
+                    <div class="col-2 col-md-1  d-flex justify-content-center">
+                        <button mat-icon-button color="primary" class="text-celeste my-auto" (click)="verDetalle(cellInfo.data.codigo , cellInfo.data.codigoEmpresa)">
+                            <mat-icon class="align-middle" matTooltip="Editar">
+                                edit
+                            </mat-icon>
+                        </button>
+                    </div>
+                    <div *ngIf="cellInfo.data.estado=='Activo'" class="col-2 col-md-1  d-flex justify-content-center">
+                        <button mat-icon-button color="warn" class="text-celeste my-auto" (click)="cambiarEstadoNoActivo(cellInfo.data.codigo)">
+                            <mat-icon class="align-middle" matTooltip="No activo">
+                                close
+                            </mat-icon>
+                        </button>
+                    </div>
+                    <!-- <div *ngIf="cellInfo.data.estado=='NoActivo'" class="col-2 col-md-1  d-flex justify-content-center">
+                        <button mat-icon-button color="warn" class="text-celeste my-auto" (click)="cambiarEstadoActivo(cellInfo.data.codigo)">
+                            <mat-icon class="align-middle"  matTooltip="Activo">
+                                check
+                            </mat-icon>
+                        </button>
+                    </div> -->
+                    <!--  <ng-container *ngIf="cellInfo.data.estadoDeConexion=='ConConexion'">
+                        <div class="col-2 col-md-1  d-flex justify-content-center">
+                            <button mat-icon-button color="accent" class="text-celeste my-auto" (click)="quitarConexion(cellInfo.data.codigo)">
+                                <mat-icon class="align-middle">
+                                    signal_cellular_alt
+                                </mat-icon>
+                            </button>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="cellInfo.data.estadoDeConexion=='SinConexion'">
+                        <div class="col-2 col-md-1  d-flex justify-content-center">
+                            <button mat-icon-button color="warn" class="text-celeste my-auto" (click)="activarConexion(cellInfo.data.codigo)">
+                                <mat-icon class="align-middle">
+                                    signal_cellular_off
+                                </mat-icon>
+                            </button>
+                        </div>
+                    </ng-container>
+
+ -->
+
+
+                </div>
+            </div>
+            <div *dxTemplate="let cellInfo of 'cellTemplateDetalleControl'" class="text-center px-1">
+                <div class="row mx-1 cont-iconos">
+                    <div class="col-6  d-flex d-inline-block">
+                        <mat-icon color="accent">
+                            cast_connected
+                        </mat-icon>
+                        <span class="pr-3 p-1 text-success font-weight-bold">  
+                            {{ cellInfo.data.cantidadDispositivo}} Conectados
+                         </span>
+                    </div>
+
+                    <div class="col-6  d-flex justify-content-center d-flex">
+                        <mat-icon color="primary">
+                            computer
+                        </mat-icon>
+                        <span class="pr-3 p-1 text-primary font-weight-bold">  
+                            {{cellInfo.data.cantidadDispositoMaximo}} Total
+                         </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div *dxTemplate="let cellInfo of 'cellTemplatePorcentaje'" class="text-center px-1">
+                <div class="row mx-1 cont-iconos">
+                    <div class="col-12  px-0 text-right">
+                        <span class="text-primary  font-weight-bold">  
+                            {{ cellInfo.data.porcentaje}} %
+                         </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div *dxTemplate="let cellInfo of 'cellTemplateEstado'" class="text-center px-1">
+                <div class="row mx-1 cont-iconos">
+                    <div class="col-12  px-0 text-right">
+                        <p *ngIf="cellInfo.data.estado=='NoActivo'" class="text-danger font-weight-bold">
+                            No activo
+                        </p>
+                        <p *ngIf="cellInfo.data.estado=='Activo'" class="text-success font-weight-bold">
+                            Activo
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div *dxTemplate="let cellInfo of 'cellTemplateMaximo'" class="text-center px-1">
+                <div class="row mx-1 cont-iconos">
+                    <div class="col-12  d-flex justify-content-center d-flex">
+                        <mat-icon color="primary">
+                            computer
+                        </mat-icon>
+                        <span class="pr-3 p-1 text-primary font-weight-bold">  
+                            {{cellInfo.data.cantidadDispositoMaximo}} Total
+                         </span>
+
+
+                    </div>
+                </div>
+            </div> -->
+
+
+            <!-- #region dxo-selection:Esta etiqueta permite agregar una columna de seleccion por cada fila -->
+            <dxo-selection mode=" single " selectAllMode="allPages ">
+            </dxo-selection>
+            <!-- #endregion-->
+
+            <!-- #region column-chooser:Habilita cuadro selector de columnas -->
+            <dxo-column-chooser [enabled]="true " mode="select " title="Selector de Columnas ">
+            </dxo-column-chooser>
+            <!-- #endregion-->
+
+            <!-- #region dxo-filter-row:Habilita la columna de filtro -->
+            <dxo-filter-row [visible]="true "></dxo-filter-row>
+            <dxo-header-filter [visible]="true "></dxo-header-filter>
+            <dxo-group-panel [visible]="true " emptyPanelText="Arrastre aqui una columna "></dxo-group-panel>
+            <dxo-grouping #expand [autoExpandAll]="true "></dxo-grouping>
+            <dxo-filter-panel [visible]="false "></dxo-filter-panel>
+            <!-- #endregion-->
+
+            <!-- #region dxo-export:Habilita exportación -->
+
+            (onExporting)="onExporting($event) ">
+            <dxo-export [enabled]="false "></dxo-export>
+
+            <!-- #endregion-->
+
+
+            <!-- #region dxo-search-panel: Habilita filtro defecto devexpress-->
+            <dxo-search-panel [visible]="false " [highlightCaseSensitive]="true " [highlightSearchText]="true " placeholder="Búsqueda ">
+            </dxo-search-panel>
+            <!--  #endregion -->
+
+            <!-- #region Seccion de paginacion 
+                   [pageSize]: Cantidad registros mostrados por pagina
+                   [enabled]: Habilita el paginado (Por defecto esta : true)
+                  -->
+            <dxo-paging [enabled]="true " [pageSize]="50 "></dxo-paging>
+            <!--  <dxo-pager [showPageSizeSelector]="true " [showInfo]="true " [allowedPageSizes]="[10, 25, 50, 100] "> </dxo-pager>-->
+
+            <!-- #endregion -->
+
+
+            <!-- #region Sumatorias-->
+            <dxo-summary>
+            </dxo-summary>
+            <!-- #endregion-->
+
+            <!-- #region ReportStorage-->
+            <dxo-state-storing [enabled]="false " type="localStorage " storageKey="ReporteEmpresa "></dxo-state-storing>
+            <!-- #endregion ReportStorage-->
+
+        </dx-data-grid>
+    </div>
+</div>
+
+<!-- #region PieReporte-->
+<!-- #endregion PieReporte-->
+<!-- #endregion Grilla --->

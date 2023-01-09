@@ -1,0 +1,53 @@
+<!-- #region Cargando -->
+<ngx-spinner [name]="'asignar-plan'" type="null">
+    <app-loading></app-loading>
+</ngx-spinner>
+<!-- #endregion Cargando -->
+<!-- #region Cabecera -->
+<app-form-header [title]="'PLAN'" [icon]="'fa fa-briefcase'" (closeDialog)="closeWindow($event)"></app-form-header>
+<!-- #endregion Cabecera -->
+<div class="container-fluid">
+    <div class="row m-1">
+        <div class="col-12">
+            <form [formGroup]="formulario" autocomplete="off" novalidate="novalidate">
+                <div class="row pb-1">
+                    <div class="col-12 p-1">
+
+                        <mat-form-field appearance="outline" class="block small">
+                            <mat-label>Plan</mat-label>
+                            <mat-select formControlName="plan">
+                                <mat-option [value]="plan.codigo" *ngFor="let plan of listaPlanes">
+                                    {{plan.nombre}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="plan.invalid && (plan.dirty || plan.touched)">
+                            <div class="error-message" *ngIf="plan.errors.required">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 p-1">
+                        <mat-form-field appearance="outline" class="block small">
+                            <mat-label>Cantidad de dispositivos</mat-label>
+                            <input matInput formControlName="cantidadDispositoMaximo" type="text" maxlength="5" placeholder="Cantidad de dispositivos" onClick="this.select()" NumberType>
+
+
+                        </mat-form-field>
+                        <div *ngIf="cantidadDispositoMaximo.invalid && (cantidadDispositoMaximo.dirty || cantidadDispositoMaximo.touched)">
+                            <div class="error-message" *ngIf="cantidadDispositoMaximo.errors.required || cantidadDispositoMaximo.errors.sinEspaciosAlInicioYFinal">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pb-1 d-flex justify-content-end">
+                    <button mat-raised-button color="primary" class="small" type="submit" (click)="guardar()">
+                        <mat-icon class="">save</mat-icon>
+                        <p class="d-none d-md-inline">Guardar</p>
+                </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

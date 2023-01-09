@@ -1,0 +1,148 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .navbar-container {
+    position: absolute;
+    top: 64px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  mat-sidenav {
+    width: 325px;
+  }
+  mat-toolbar {
+   height: 50px;
+  }
+  .bg-lightBlue{
+    background-color: #e3eef6c2 !important;
+  }
+  .txt-modulos {
+    color: #0d55a0;
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+  
+  .txt-quick-access {
+    color: #17b8ae;
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+  .color-gris{
+    color: #adadad
+  }
+  .color-blue{
+    color: #0d55a0;
+  }
+  /* .btn-quick-access {
+    background-color: #0091ff;
+    color: #ffffff;
+    border: solid 1px #0091ff;
+    border-radius: 6px;
+  }
+  .btn-quick-access:focus{
+    box-shadow: none!important;
+  }
+  .btn-quick-access:hover{
+    background-color: #1772b8;
+    color: #fff;
+  } */
+  
+  .bg-blue{
+    background-color: #0d55a0;
+  }
+  
+  .email-text{
+    margin-top: -15px !important;
+  }
+  
+  .text-menu {
+    font-size : 0.8rem;
+  }
+  .icon-empresa{
+    cursor: pointer;
+  }
+  .info-punto-venta{
+    color: #008aca;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  .info-establecimiento {
+    color: #008aca;
+    font-size: 0.875rem;
+  }
+  .punto-venta-icon mat-icon{
+    font-size: 3.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    color: #ffffff;
+    background-color: #008aca;
+    border-radius: 8px;
+  
+  }
+  .punto-venta-icon mat-icon:hover{
+    font-size: 4.2rem;
+    width: 4.2rem;
+    height: 4.2rem;
+    color: #ffffff;
+    background-color: #0d55a0;
+    border-radius: 8px;
+  }
+  
+  .flecha-nav-negocio{
+    position: absolute;
+    top: 0;
+    right: 4px;
+    cursor: pointer;
+  }
+  .girar180{
+    transform: rotate(180deg);
+  }
+  .boton-toggle:active,
+  .boton-toggle:focus{
+    outline: none!important;
+  }
+  
+  /*modificado*/
+  .contenedor-menu{
+    border: 1px solid #b1b1b1;
+    border-radius: 4px;
+    padding: 2px 2px;
+  }
+  .cibercont-module{
+    color: #939393;
+    border-radius: 4px;
+  }
+  .cibercont-module:hover{
+    color: #ffffff!important;
+    background-color: #0091ff!important;
+  }
+  .menu-activo{
+    background-color: #1772b8!important;
+    color: #ffffff!important;
+  }
+  .menu-icono{
+    color: #0EC4B2!important;
+  }
+  .contenedor-quick-access {
+    padding-left: 10px!important;
+    padding-right: 10px!important;
+  }
+  /* .quick-access-activo{
+    background-color: #1772b8!important;
+    color: #ffffff!important;
+  } */
+  /*esto esta puesto por un bug que se quedaba pintado color gris a veces al darle click en uno de los accesos rapidos*/
+  .mat-list-single-selected-option, .mat-list-single-selected-option:hover, .mat-list-single-selected-option:focus {
+    background: rgba(252, 252, 252, 0);
+  }
+  
+  @media (min-width: 320px){
+    .navbar-container {
+      top: 50px;
+    }
+  }
+  
+  

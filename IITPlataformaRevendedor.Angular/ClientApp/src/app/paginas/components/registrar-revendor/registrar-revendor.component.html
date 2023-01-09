@@ -1,0 +1,141 @@
+<div class="bg-login">
+</div>
+<!-- #region INICIO boton de cargando -->
+<!-- <ngx-spinner [name]="'login'" template = "<img src='../../../../../assets/img/Logo.gif' width=80px />" ></ngx-spinner> -->
+<ngx-spinner [name]="'registrar-revendedor'" type="null">
+    <app-loading></app-loading>
+</ngx-spinner>
+<!--  <app-cibercont-spinner [nombre]="'login'"></app-cibercont-spinner> -->
+<!-- #endregion FIN boton cargando -->
+<div class="container contenedor-login">
+    <div class="row h-100 justify-content-center align-items-center p-4 ">
+        <div class="col-xs-8 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+            <div class="row mb-5">
+                <div class="col-12 bg-light border-principal">
+                    <div class="row p-4">
+                        <div class="col-12 text-center">
+                            <img class="logo-usuario" src="../../../../assets/img/logo-vertical.png" alt="logo-cibercont">
+                        </div>
+                    </div>
+                    <form [formGroup]="formulario">
+                        <div class="form-row p-2">
+                            <div class="col-12 p-1">
+                                <mat-form-field appearance="outline" class="block small">
+                                    <mat-label>Correo electrónico</mat-label>
+                                    <input matInput type="text" maxlength="150" pattern="[^ @]*@[^ @]*" formControlName="correo" onclick="this.select()">
+                                    <mat-icon matSuffix>mail</mat-icon>
+                                </mat-form-field>
+
+                                <div *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                                    <div class="error-message-medium" *ngIf="correo.errors.required">
+                                        Campo obligatorio
+                                    </div>
+                                    <div class="error-message-medium" *ngIf="correo.errors.pattern">
+                                        Correo incorrecto
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 p-1">
+                                <mat-form-field appearance="outline" class="block small">
+                                    <mat-label>RUC</mat-label>
+                                    <input matInput type="text" maxlength="11" formControlName="numeroDocumento" onclick="this.select()" (blur)="buscarEmpresa()">
+                                    <mat-icon matSuffix class="d-flex icon-extra-small my-auto" svgIcon="sunat">
+
+                                    </mat-icon>
+                                </mat-form-field>
+                                <div *ngIf="numeroDocumento.invalid && (numeroDocumento.dirty || numeroDocumento.touched)">
+                                    <div class="error-message-medium" *ngIf="numeroDocumento.errors.required">
+                                        Campo obligatorio
+                                    </div>
+                                    <div class="error-message-medium" *ngIf="numeroDocumento.errors.RUC">
+                                        RUC ingresado inválido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 p-1">
+                                <mat-form-field appearance="outline" class="block small">
+                                    <mat-label>Razon Social</mat-label>
+                                    <input matInput type="text" maxlength="250" formControlName="razonSocial" [readonly]="true" onclick="this.select()">
+                                    <mat-icon matSuffix *ngIf="!cargando">
+                                        business
+                                    </mat-icon>
+                                </mat-form-field>
+                                <app-cargando *ngIf="cargando" class="cargando-flotante-input" [escala]="'x1'" [mostrarTexto]=false>
+                                </app-cargando>
+                                <div *ngIf="razonSocial.invalid && (razonSocial.dirty || razonSocial.touched)">
+                                    <div class="error-message-medium" *ngIf="razonSocial.errors.required">
+                                        Campo obligatorio
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 p-1">
+                                <mat-form-field appearance="outline" class="block small">
+                                    <mat-label>Ingrese su contraseña</mat-label>
+                                    <input matInput maxlength="250" [type]="ocultar ?  'password' : 'text'" autocomplete="on" formControlName="password" onclick="this.select()">
+                                    <button class="border-0 bg-white" tabindex="-1" role="button" mat-icon-button matSuffix (click)="ocultar=!ocultar" [attr.aria-label]="'Ocultar password'" [attr.aria-pressed]="ocultar">
+                                    <!-- <mat-icon>{{ocultar ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+                                    <mat-icon>vpn_key</mat-icon>
+                            </button>
+                                    <!-- <mat-error>Campo obligatorio</mat-error> -->
+                                </mat-form-field>
+                                <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                                    <div class="error-message-medium">
+                                        La contraseña debe tener más 8 carácteres, 1 letra mayúscula y 1 carácter especial
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12  my-2">
+                                <button mat-raised-button color="primary" class="block medium" (click)="registrar()">
+                            <!-- <i *ngIf="cargando" class="fa fa-spinner fa-pulse fa-lg fa-fw"></i>
+                            <mat-icon *ngIf="!cargando">login</mat-icon>
+                            &nbsp; --> Registrar
+                        </button>
+                            </div>
+                            <!-- <div class="col-12 text-center">
+                        <a  class="enlace-design">Recuperar contraseña</a> <br>                        
+                    </div>                            -->
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="row ">
+                        <div class="offset-3 col-2 text-center px-2">
+                            <button mat-icon-button color="primary" class="iconos-redes-sociales" (click)="irALink('cibercont')">
+                            <img  class ="button-icon-cibercont" src="../../../../assets/img/logo-blanco.png" alt="">
+                        </button>
+                        </div>
+                        <div class="col-2 text-center px-2">
+                            <button mat-icon-button color="primary" class="iconos-redes-sociales" (click)="irALink('youtube')">
+                                    <i class = "fa fa-youtube-play fa-sm" ></i>
+                             </button>
+                        </div>
+                        <div class="col-2 text-center px-2">
+                            <button mat-icon-button color="primary" class="iconos-redes-sociales" (click)="irALink('facebook')">
+                                 <i class = "fa fa-facebook fa-sm"></i>
+                            </button>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12 text-center texto-marca">
+                                    <span>  www.cibercont.com </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div>
+
+</div>

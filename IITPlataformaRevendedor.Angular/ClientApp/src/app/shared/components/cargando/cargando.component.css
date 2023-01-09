@@ -1,0 +1,49 @@
+p{
+    /* font-style: italic; */
+    /* font-size: 13px; */
+}
+
+
+.img-x1{
+    max-width: 20px;
+}
+.img-x2{
+    max-width: 60px;
+}
+.img-x3{
+    max-width: 100px;
+}
+.img-x4{
+    max-width: 150px;
+}
+.img-x5{
+    max-width: 200rem;
+}
+
+.text-x1{
+    font-size: 8px;
+}
+.text-x2{
+    font-size: 13px;
+}
+.text-x3{
+    font-size: 18px;
+}
+.text-x4{
+    font-size: 24px;
+}
+.text-x5{
+    font-size: 32px;
+}
+
+
+/* 
+
+TAMAÑOS:
+    x1 = 20px
+    x2 = 60px
+    x3 = 100px
+    x4 = 150px
+    x5 = 200px
+
+*/

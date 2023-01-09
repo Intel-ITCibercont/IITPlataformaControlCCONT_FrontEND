@@ -1,0 +1,43 @@
+<div class="row"
+     [formGroup]="parts"
+     [attr.aria-describedby]="_formField?.getLabelId()"
+     (focusin)="onFocusIn($event)"
+     (focusout)="onFocusOut($event)"> 
+     <mat-select class="input-element  ml-1 col-2  col-sm-2 col-md-1 p-0"
+             #opcionesInput
+             value="None"
+             formControlName="valorOpciones">
+             <mat-option class ="p-1" *ngFor="let opcion of listaDeOpciones" 
+                     [value]="opcion"
+                     value="">
+                     {{opcion.nombre}}
+             </mat-option>
+     </mat-select>    
+     <input class="input-element mr-1 col-3 col-md-3 col-lg-4 p-0"
+            matInput
+            formControlName="valorPorcentaje" 
+            aria-label="Porcentaje"
+            type="number"
+            [min]="0"
+            [max]="20"
+            style="text-align:right;"
+            (input)="_handleInput(parts.controls.valorPorcentaje, porcentajeInput)"
+            (blur)="validarPorcentaje()"
+            #porcentajeInput
+            readonly
+            DecimalFormatterDirective>
+    <span class="input-spacer">%</span>
+    <span class="input-spacer pl-1">&vert;</span>
+    <input class="input-element  ml-1 col-4 col-md-5 col-lg-5 p-0"
+            matInput
+            type ="number"
+            formControlName="valorNominal"
+            maxLength="250"
+            style="text-align:right;"
+            aria-label="Nominal"
+            [disabled]="true"
+            (input)="_handleInput(parts.controls.valorNominal)"
+            #nominalInput 
+            readonly
+            DecimalFormatterDirective>
+</div>

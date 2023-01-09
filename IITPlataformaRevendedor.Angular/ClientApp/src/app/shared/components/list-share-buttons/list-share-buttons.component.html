@@ -1,0 +1,21 @@
+<div class="row"> 
+    <div class="col-12 text-share">
+      <p class="text-center">Puede compartir su comprobante</p>
+    </div>
+    <div  class="col-12 px-1 d-flex justify-content-center">
+        <share-buttons *ngIf="this.deviceDetectorService.isMobile()" [theme]="'outline'" 
+            [include]="['sms','messenger','whatsapp', 'telegram']"
+            [show]="5"
+            [size]="-4"
+            [url]="shareLink"
+            class="btn-share">
+        </share-buttons>
+        <share-buttons *ngIf="this.deviceDetectorService.isDesktop()" [theme]="'outline'" 
+            [include]="['whatsapp','email' , 'telegram']"
+            [show]="5"
+            [size]="-4"
+            [url]="shareLink"
+            class="btn-share">
+        </share-buttons>
+    </div> 
+ </div>

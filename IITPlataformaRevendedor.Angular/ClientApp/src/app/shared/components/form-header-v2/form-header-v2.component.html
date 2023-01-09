@@ -1,0 +1,54 @@
+
+
+<!-- *PARA LAS CABECERAS 1UE VAN EN PAGINAS "NO DIALOG" NO PERMITE EL ARRASTRE -->
+<div *ngIf="!this.dialogMode">
+    <div [ngClass]="{'header-without-margin cibercont-form-header' : !this.dialogMode, 'cibercont-header-dialog bg-dark text-white' : this.dialogMode}"
+         class="text-left row component-header"
+         id="responsive-header">
+
+        <div class="col-9 col-md-6 my-auto ">
+            <h4 id="responsive-title" class="pt-2"><small><i class = {{icon}} class="fa-fw"></i>&nbsp; {{title}}</small></h4>
+        </div>
+        <div class="d-none d-md-block col-md-6 justify-content-end px-1 text-right">
+            <button class="m-1" mat-stroked-button color="primary" *ngFor="let a of accionesAuxiliares" (click)="a.accion()" >
+                <mat-icon>insert_chart_outlined</mat-icon>
+                {{a.nombreAccion| uppercase}}
+            </button>
+        </div>
+       
+        <div class=" d-sm-none col-3 d-flex justify-content-end">
+            <button mat-button [matMenuTriggerFor]="aboveMenu">
+                <mat-icon>dialpad</mat-icon>
+            </button>
+            <mat-menu #aboveMenu="matMenu" yPosition="above">
+                    <button mat-menu-item *ngFor="let a of accionesAuxiliares" (click)="a.accion()">
+                        <mat-icon>insert_chart_outlined</mat-icon>{{a.nombreAccion}}                    </button>
+            </mat-menu>
+
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- !ORIGINAL -->
+<!-- <div cdkDrag
+    cdkDragRootElement=".cdk-overlay-pane"
+    cdkDragHandle
+    [ngClass]="{'header-without-margin cibercont-form-header' : !this.dialogMode, 'cibercont-header-dialog bg-dark text-white' : this.dialogMode}"
+    class="text-left row component-header"
+    id="responsive-header">
+    <div class="my-auto" [ngClass]="{'col-10 col-md-10': this.dialogMode, 'col-12': !this.dialogMode}">
+        <h3 id="responsive-title" class="pt-2"><small><i class = {{icon}} class="fa-fw"></i>{{title}}</small></h3>
+    </div>
+    <div *ngIf="this.dialogMode" class="col-2 col-md-2 my-3 my-md-auto cursor-pointer" (click)="closeWindow()">
+        <a class="d-flex justify-content-end"><i class="material-icons" >close</i></a>
+    </div>
+</div> -->

@@ -1,0 +1,88 @@
+.border-principal{
+    border: solid 1px #fff;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 
+            0px 11px 15px -7px rgba(0, 0, 0, 0.2), 
+            0px 24px 38px 3px rgba(0, 0, 0, 0.14), 
+            0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+}
+.img-logo{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 230px;
+    z-index: 1;
+    min-width: 150px;
+}
+.bg-principal{
+    background-color: #0074c0;
+}
+/* .bg-login{
+    background-image: url("../../../../../assets/img/pattern.png");
+    width:auto;
+    height:100vh;
+     min-height: 1000px; Estaba en 1000px 
+    background-size: cover;
+    display: block;
+    background-position-x: center;
+    background-position-y: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    opacity: 0.2;
+  } */
+.bg-login{
+    background-image: url("../../../../assets/img/pattern.png");
+    color: #0074c0;
+    padding: 270px 0;
+    perspective: 5000px;
+    perspective-origin:  100% 100%;
+    text-align: center;
+    margin-bottom: 0;
+    height: 100vh;
+}
+.contenedor-login{
+    height:100vh;
+    top:0px;
+    /*z-index: 10;*/
+    position:absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+.enlace-design{
+    color: #0077C7;
+    font-size: small;
+    cursor: pointer;
+    cursor: hand;
+}
+.enlace-design:hover{
+    color: #0091F2;
+    text-decoration: underline;
+}
+.logo-usuario{
+  width: 180px;
+  height: auto;
+
+}
+.enlace-design-text {
+  font-size: small;
+
+}
+
+.iconos-redes-sociales {
+
+  color: white;
+  font-size: 1.2rem;
+}
+.button-icon-cibercont {
+
+  width: 28px;
+}
+.texto-marca {
+
+  color:white;
+  font-size: 0.7rem;
+
+}

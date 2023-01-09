@@ -1,0 +1,557 @@
+
+
+
+@font-face {
+  font-family: "Arial";
+  src: local("Roboto"), url(../assets/fonts/Roboto-Regular.ttf) format("truetype");
+}
+* {
+  font-family: "Arial";
+}
+
+@import "assets/fonts/font-awesome-4.7.0/css/font-awesome.css";
+html, body { height: 100%; }
+
+.boton-ajustado{
+  margin-right: 2px;
+}
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
+
+/* Maria Clase aplicada para las separaciones con borde */
+.container-section{
+  border: solid 1px #cecece;
+  border-radius: .5rem;
+  margin-left: 0rem;
+  margin-bottom: 1rem;
+  padding: 4px 0px;
+}
+
+.color-blue{
+  color: #008aca;
+}
+.bg-ciberBlue{
+background-color: #008aca;
+}
+
+/*Para contenedor de modales mensaje  de resultado */
+.ccont-message-dialog .mat-dialog-container {
+  padding: 0px !important;
+  width: 400px;
+  /* height: auto;
+  max-height: 85vh; */
+}
+
+
+/*Elimina el padding top,bottom,left y right de los dialog */
+.myapp-no-padding-dialog .mat-dialog-container {
+  padding: 0px !important;
+  overflow: unset;
+  /* height: auto;
+  max-height: 85vh; */
+}
+
+
+/*Establece la altura del sialog en auto */
+.ccont-height-auto-dialog .mat-dialog-container {
+  height: auto;
+}
+/*Establece la altura del sialog en auto */
+.ccont-max-height-dialog .mat-dialog-container {
+  max-height: 85vh;
+}
+/*Elimina el padding solo del top de los dialog */
+.ccont-no-padding-top-dialog .mat-dialog-container {
+  padding-top: 0px !important;
+}
+/*Elimina el padding  top,bottom,left y right de los dialog y establece el tamaño */
+.ccont-auxiliar-table-dialog .mat-dialog-container {
+  padding: 0px !important;
+  height: auto;
+  max-height: 85vh;
+  max-width: 700px;
+}
+
+.cargando-flotante-input{
+  /*
+  para que eso funcione se tiene que poner el cargando justo debajo de la etiqueta input,
+  ademas el input debe estar en un contenedor div.col
+  */
+  position: absolute;
+  top: 12px;
+  right: 25px;
+}
+p {
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+}
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.text-red {
+
+  color : #ff8080;
+}
+
+.bg-red {
+
+  background-color : #ff8080;
+}
+
+.borde-redondeado{
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+.bg-gris1{
+  background-color: #f5f5f5;
+}
+
+.error-message{
+  font-size: 10px;
+  color: #ff8080; 
+  background-color: white !important;
+  
+}
+.error-message-medium{
+  margin-left: 10px;
+  font-size: 10px;
+  color: #ff8080; 
+  background-color: #f8f9fa !important;
+  top: 75%;
+}
+.block {
+  width: 100% !important;
+}
+.large{
+  font-size: 0.875rem !important;
+}
+.medium{
+  font-size: 0.75rem !important;
+}
+.small{
+  font-size: 0.625rem !important;
+}
+.extra-small {
+
+  font-size: 0.5rem !important;
+}
+
+
+.icon-large{
+  font-size: 1.75rem !important;
+}
+.icon-medium{
+  font-size: 1.5rem !important;
+}
+.icon-small{
+  font-size: 1.25rem !important;
+}
+.icon-extra-small {
+  font-size: 1rem !important;
+  height: 20px !important;
+  width: 20px !important;
+  
+}
+
+.error-message {
+  margin-left: 8px;
+  font-size: 10px !important;
+  background-color: #f7f7f7;
+}
+.mat-form-field {
+
+  font-family: Arial !important;
+}
+
+
+.button-style-dx{
+  /* padding: 8px; */
+  border: solid 1px #3a87c3;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: white;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top:7px;
+  padding-bottom: 7px;
+  color:#3a87c3
+}
+.button-style-dx:hover {
+  background-color: #3a87c3;
+  color:white
+  
+}
+.button-style-dx:active{
+  background-color: #c2c2c2;
+
+}
+
+.button-style-dx-green{
+  /* padding: 8px; */
+  border: solid 1px  #17b8ae;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: white;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top:1px;
+  padding-bottom: 1px;
+  color: #17b8ae
+}
+.button-style-dx-green:hover {
+  background-color:  #17b8ae;
+  color:white
+  
+}
+.button-style-dx-green:active{
+  background-color: #c2c2c2;
+
+}
+
+
+/* clase aplicada para el hover de los botones cibercont */
+.btn-cibercont{
+  font-size: 90%;
+}
+.btn-cibercont:hover{
+  background-color: #3a87c3;
+  opacity: 0.6;
+}
+.color-blue{
+  color: #0d55a0;
+}
+
+.component-header{
+  /* position: sticky; */
+  top: 0px;
+  z-index: 2;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bg-blue{
+  background-color: #0d55a0;
+}
+/* Boton mas pequenho para las listas mostrasas en las tablas auxiliares */
+.btn-delete{
+  line-height: 0 !important;
+}
+/*Permite volver visible la etiqueta <hr>, ya que es modificada por el bootstrap */
+hr {
+  display: block;
+  margin: 10px 0 10px 0;
+  border-top: 1px solid rgba(0, 0, 0, .12);
+  width: 100%
+}
+.bg-lightBlue{
+  background-color: #b9d5ea !important;
+}
+.bg-gris{
+  background-color: #e8e8e8!important;
+}
+.btn-centrado{
+  padding: 0rem 0.1rem;
+}
+/*INICIO seccion botones para las acciones de reporte */
+.btn-panel-access {
+  background-color: #fff;
+  color: #17b8ae;
+  border: solid 2px #17b8ae;
+  border-radius: 10%;
+}
+.btn-panel-access:hover{
+  background-color: #17b8ae;
+  color: #fff;
+}
+/*FIN seccion botones para las acciones de reporte */
+
+.border-blue{
+  border-color: #0d55a0 !important;
+}
+.bg-blue{
+  background-color: #0d55a0 !important;
+}
+.color-blue-2{
+  color: #1772b8 !important;
+}
+.text-celeste{
+  color: #008aca;
+}
+.bg-blue-2{
+  background-color: #1772b8 !important;
+}
+.bg-black{
+  background-color: #343a40 !important;
+}
+.bg-celeste {
+  background-color: #008aca;
+}
+.color-green{
+  color: #17b8ae !important;
+}
+.bg-green{
+  background-color:  #17b8ae !important;
+}
+.border-green{
+  border-color: #17b8ae !important;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+.cursor-default{
+  cursor: default;
+}
+.color-gris{
+  color: #adadad
+}
+/*
+####################################################
+M E D I A  Q U E R I E S
+####################################################
+*/
+/* Small devices (landscape phones, 320px and up) */
+@media (min-width: 320px) {  
+ 
+  .large{
+    font-size: 0.875rem !important;
+  }
+  .medium{
+    font-size: 0.75rem !important;
+  }
+  .small{
+    font-size: 0.625rem !important;
+  }
+  .extra-small {
+
+    font-size: 0.5rem !important;
+  }
+  
+
+  .icon-large{
+    font-size: 1.75rem !important;
+    cursor: pointer;
+  }
+  .icon-medium{
+    font-size: 1.5rem !important;
+    cursor: pointer;
+  }
+  .icon-small{
+    font-size: 1.25rem !important;
+    cursor: pointer;
+  }
+  .icon-extra-small {
+    font-size: 1rem !important;
+    cursor: pointer;
+  }
+  
+  
+}
+.custom-dialog-container .mat-dialog-container {
+  overflow: unset;
+}
+
+/* Small devices (landscape phones, 544px and up) */
+@media (min-width: 544px) { 
+
+  .large{
+    font-size: 0.9375rem !important;
+  }
+  .medium{
+    font-size: 0.8125rem !important;
+  }
+  .small{
+    font-size: 0.6875rem !important;
+  }
+  .extra-small {
+
+    font-size: 0.5625rem !important;
+  }
+  
+
+  .icon-large{
+    font-size: 2rem !important;
+    cursor: pointer;
+  }
+  .icon-medium{
+    font-size: 1.75rem !important;
+    cursor: pointer;
+  }
+  .icon-small{
+    font-size: 1.5rem !important;
+    cursor: pointer;
+  }
+  .icon-extra-small {
+    font-size: 1.25rem !important;
+    cursor: pointer;
+  }
+  
+}
+ 
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+
+  .large{
+    font-size: 0.9375rem !important;
+  }
+  .medium{
+    font-size: 0.8125rem !important;
+  }
+  .small{
+    font-size: 0.6875rem !important;
+  }
+  .extra-small {
+
+    font-size: 0.5625rem !important;
+  }
+  
+ 
+  .icon-large{
+    font-size: 2rem !important;
+  }
+  .icon-medium{
+    font-size: 1.75rem !important;
+  }
+  .icon-small{
+    font-size: 1.5rem !important;
+  }
+  .icon-extra-small {
+    font-size: 1.25rem !important;
+  }
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+  .icon-large{
+    font-size: 2rem !important;
+  }
+  .icon-medium{
+    font-size: 1.75rem !important;
+  }
+  .icon-small{
+    font-size: 1.5rem !important;
+  }
+  .icon-extra-small {
+    font-size: 1.25rem !important;
+
+  }
+
+  .large{
+    font-size: 0.9375rem !important;
+  }
+  .medium{
+    font-size: 0.8125rem !important;
+  }
+  .small{
+    font-size: 0.6875rem !important;
+  }
+  .extra-small {
+
+    font-size: 0.5625rem !important;
+  }
+
+ 
+ 
+}
+ 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  
+
+  .icon-large{
+    font-size: 2rem !important;
+  }
+  .icon-medium{
+    font-size: 1.75rem !important;
+  }
+  .icon-small{
+    font-size: 1.5rem !important;
+  }
+  .icon-extra-small {
+    font-size: 1.25rem !important;
+  }
+
+
+  .large{
+    font-size: 0.9375rem !important;
+  }
+  .medium{
+    font-size: 0.8125rem !important;
+  }
+  .small{
+    font-size: 0.6875rem !important;
+  }
+  .extra-small {
+
+    font-size: 0.5625rem !important;
+  }
+ 
+}
+#responsive-title {
+
+  
+  
+}
+
+@media (mIN-width: 900px){ /*Agarra en 437  - Pantalla Media*/
+
+  #responsive-title{
+    font-size: 140% !important;
+    /* Ya no es necesario el padding left ya que el ícono de hamburguesa ya no estará en el lado izquierdo del título */
+    /* padding-left: 7% !important; */
+  }
+  #responsive-header{
+    height: 51px;
+    width: auto;
+    /* Ya no es necesario el padding left ya que el ícono de hamburguesa ya no estará en el lado izquierdo del título */
+    /* margin-left: auto;
+    margin-right: auto; */
+  }
+}
+.sm-legend{
+  font-size: 12px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@media (max-width: 900px) and (min-width: 543.4px){ /*Agarra en 437  - Pantalla Media*/
+
+  #responsive-title{
+    font-size: 140% !important;
+    /* Ya no es necesario el padding left ya que el ícono de hamburguesa ya no estará en el lado izquierdo del título */
+    /* padding-left: 7% !important; */
+  }
+  #responsive-header{
+    height: 51px;
+    width: auto;
+    /* Ya no es necesario el padding left ya que el ícono de hamburguesa ya no estará en el lado izquierdo del título */
+    /* margin-left: auto;
+    margin-right: auto; */
+  }
+}
+.sm-legend{
+  font-size: 12px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+@media (max-width: 543.4px){ /*Pantalla muy pequenha */
+
+  #responsive-title{
+    font-size: 120% !important;
+    /* Ya no es necesario el padding left ya que el ícono de hamburguesa ya no estará en el lado izquierdo del título */
+    /* padding-left: 10% !important;
+    padding-right: 6% !important; */
+  }
+  #responsive-header{
+    height: 51px;
+  }
+}
+  

@@ -1,0 +1,29 @@
+.menu-activo{
+    background-color: #1772b8!important;
+    color: #ffffff!important;
+  }
+  .menu-icono{
+    color: #0EC4B2!important;
+  }
+
+  .contenedor-menu{
+    border: 1px solid #b1b1b1;
+    border-radius: 4px;
+    padding: 2px 2px;
+  }
+  .cibercont-module{
+    color: #939393;
+    border-radius: 4px;
+  }
+  .cibercont-module:hover{
+    color: #ffffff!important;
+    background-color: #0091ff!important;
+  }
+  .text-menu {
+    font-size : 0.8rem;
+  }
+    /*esto esta puesto por un bug que se quedaba pintado color gris a veces al darle click en uno de los accesos rapidos*/
+.mat-list-single-selected-option, .mat-list-single-selected-option:hover, .mat-list-single-selected-option:focus {
+  background: rgba(252, 252, 252, 0);
+}
+  

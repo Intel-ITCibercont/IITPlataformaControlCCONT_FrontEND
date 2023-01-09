@@ -1,0 +1,12 @@
+
+.md-dialog-container {
+    width: 400px;
+}
+.text-message {
+
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.text-share{
+    font-size: 0.7rem;
+}

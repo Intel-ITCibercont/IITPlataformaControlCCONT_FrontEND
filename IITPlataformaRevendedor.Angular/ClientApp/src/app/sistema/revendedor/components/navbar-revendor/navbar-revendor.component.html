@@ -1,0 +1,115 @@
+<p>
+    <mat-toolbar color="primary">
+        <a class="navbar-brand d-none d-md-inline" [routerLink]="['/sistema/inicio']">
+            <img [routerLink]="['/sistema/inicio']" src="../../../../../assets/img/logotipo-cibercont-blanco-2.png" width="180" alt="" loading="lazy">
+        </a>
+        <a class="d-inline d-md-none" [routerLink]="['/sistema/inicio']">
+            <img [routerLink]="['/sistema']" src="../../../../../assets/img/logo-blanco.png" width="35" height="30" alt="" loading="lazy">
+        </a>
+        <button mat-icon-button class="example-icon ml-md-5 ml-0 boton-toggle" (click)="sidenav.toggle()" aria-label="menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu" aria-label="">
+              <mat-icon>
+                business_center
+              </mat-icon>
+      </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+          <mat-icon class ="color-blue-2">verified_user</mat-icon>
+          <span class="color-blue-2 large">{{_usuarioLogeado.nombre}}</span> 
+        </button>
+            <mat-divider></mat-divider>
+            <!--   <button color="primary" 
+                mat-menu-item 
+                (click)="abrirMantenimientoUsuarios()"
+                >
+               <mat-icon class="icon-small">supervised_user_circle</mat-icon>
+               <span class="d-inline" >Mantenimiento Usuarios</span>
+        </button>
+        <button color="primary" 
+                mat-menu-item (click)="abrirCambiarContrasena()">
+               <i class="fa fa-key fa-fw fa-lg mr-3"></i>
+               <span class="d-inline">Cambiar contraseña</span>
+        </button>
+        <mat-divider></mat-divider> -->
+            <button color="primary" mat-menu-item (click)="cerrarSesion()">
+          <mat-icon class="icon-small">keyboard_return</mat-icon>
+          <span class="d-inline">Cerrar sesión</span>
+        </button>
+        </mat-menu>
+    </mat-toolbar>
+</p>
+
+<mat-sidenav-container class="navbar-container">
+    <mat-sidenav #sidenav mode="push" [opened]="this.opened" class="row bg-white pl-3">
+        <div class="col">
+
+            <!-- #region cabecera menu lateral -->
+            <div class="row justify-content-between sidebar-heading my-3">
+                <div class="col-12 text-color py-2">
+                    <form [formGroup]="navbarForm">
+                        <div class="row px-2 pt-0 pb-2">
+                            <div class="col-12">
+                                <div class="row punto-venta-container">
+                                    <!-- <div class="col-3 text-right punto-venta-icon">
+                        <mat-icon (click)="puntoDeVentas()"
+                                  class="cursor-pointer">
+                                  store
+                        </mat-icon>
+                      </div> -->
+                                    <!-- <div class="col-9 text-left my-auto nav-negocio">
+                        <p class="info-punto-venta">{{puntoDeVentaSeleccionado.nombre}}</p>
+                        <p class="info-establecimiento">{{puntoDeVentaSeleccionado.establecimiento.nombre}}</p>
+                        <mat-icon class="flecha-nav-negocio"
+                                  [ngClass]="{'girar180': mostrarInfoEmpresa}"
+                                  color="primary"
+                                  (click)="mostrarInfoEmpresa=!mostrarInfoEmpresa">
+                                  arrow_drop_down_circle
+                        </mat-icon>
+                      </div> -->
+                                    <div *ngIf="mostrarInfoEmpresa" [@enterAnimation] class="col-12">
+                                        <p class="info-empresa-razon"><strong>{{_usuarioLogeado.nombre}}</strong></p>
+                                        <!-- <p class="info-empresa-ruc color-gris">RUC: {{_usuarioLogeado.}}</p> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <ng-container *ngIf="this.listaAccionesRapidas.length > 0">
+                    <div class="col-12 px-3 mb-2">
+                        <div class="row mt-2 contenedor-quick-access">
+                            <div *ngFor="let accion of listaAccionesRapidas" class="col-4 p-1">
+                                <app-navbar-accion-rapida-v2 [accionRapida]="accion">
+                                </app-navbar-accion-rapida-v2>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <div class="col-12">
+                    <mat-selection-list [multiple]="false" class="contenedor-menu">
+
+                        <app-navbar-item-v2 *ngFor="let option of  this.listaDeModuloPrincipales" [option]="option" (click)="sidenav.toggle()">
+
+                        </app-navbar-item-v2>
+                        <mat-divider *ngIf="this.listaDeModuloSecundarios.length>0"></mat-divider>
+                        <app-navbar-item-v2 *ngFor="let option of  this.listaDeModuloSecundarios" [option]="option" (click)="sidenav.toggle()">
+
+                        </app-navbar-item-v2>
+
+                    </mat-selection-list>
+                </div>
+
+            </div>
+            <!-- #endregion cabecera menu lateral -->
+        </div>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content class="container-fluid">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

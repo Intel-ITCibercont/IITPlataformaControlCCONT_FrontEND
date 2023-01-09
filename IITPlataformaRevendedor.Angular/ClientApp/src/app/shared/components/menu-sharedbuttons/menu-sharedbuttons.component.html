@@ -1,0 +1,24 @@
+
+<!-- <button mat-icon-button
+        id="button-share"
+        color="primary"
+        [ngClass]="{'bg-green': openPreview== false, 'btn-share-document': openPreview == true}"
+        [matMenuTriggerFor]="menu" class="">
+        <mat-icon  class="icon-extra-small">share</mat-icon>
+</button>
+<mat-menu #menu="matMenu" xPosition="before" 
+    class="shared shadow-none"> -->
+    <share-buttons *ngIf="this.deviceDetectorService.isMobile()" [theme]="'circles-dark'" 
+        [include]="['whatsapp', 'sms','messenger','email' , 'telegram']"
+        [show]="2"
+        [size]="-4"
+        [url]="sharelink">
+    </share-buttons>
+    <share-buttons *ngIf="this.deviceDetectorService.isDesktop()" [theme]="'circles-dark'" 
+
+        [include]="['whatsapp','email','telegram']"
+        [show]="2"
+        [size]="-4"
+        [url]="sharelink">
+    </share-buttons>
+<!-- </mat-menu> -->

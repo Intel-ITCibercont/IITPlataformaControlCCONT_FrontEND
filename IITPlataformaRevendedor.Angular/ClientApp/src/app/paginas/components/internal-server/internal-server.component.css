@@ -1,0 +1,89 @@
+/* CSS only for examples not required for centering */
+.contenedor404 {
+    padding-top: 40px;
+    height: 100%!important;
+    background-color: #ededed;
+}
+a{
+    background-color: #ededed;
+}.cont-principal-error{
+    background-color: #efefef;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.cont-404{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.btn-404{
+    font-size: 5rem;
+    background-color: #ffffff;
+    border-radius: 50%;
+    height: 12rem;
+    width: 12rem;
+    font-weight: bold;
+    color: #efefef;
+    align-self: center;
+    cursor: default!important;
+    position: relative;
+}
+.btn-404::after{
+    position: absolute;
+    content: '';
+    background: url(../../../../assets/img/logo-blanco.png);
+    background-size: 94%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #2195c1;
+    border-radius: 50%;
+    width: 5.4rem;
+    height: 5.4rem;
+    top: -2rem;
+    right: -2rem;
+    border: 0.4rem solid #efefef;
+}
+.btn-404:focus{
+    box-shadow: none;
+}
+.text-1{
+    color: #008bcc;
+}
+.btn-regresar{
+    background-color: #008bcc!important;
+}
+h3{
+    font-weight: bold;
+}
+
+
+.footer-principal-error{
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #efefef;
+}
+.cont-footer-404{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.cont-imagen{
+    width: 16%;
+}
+.cont-texto{
+    width: auto;
+    text-align: center;
+    color: #909090;
+}
+.logo-azul{
+    width: 100%;
+}
+.error-numeros{
+    color: black;
+    font-weight: bold;
+}

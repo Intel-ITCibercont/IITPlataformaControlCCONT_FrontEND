@@ -1,0 +1,36 @@
+<div class="row"
+     [formGroup]="parts"
+     [attr.aria-describedby]="_formField?.getLabelId()"
+     (focusin)="onFocusIn($event)"
+     (focusout)="onFocusOut($event)">
+       <input class="input-element mr-1 col-4 col-md-3 col-lg-4 p-0"  
+                matInput
+                formControlName="valorPorcentaje" 
+                aria-label="Porcentaje"
+                type="number"
+                [min]="0"
+                [max]="20"
+                style="text-align:right;"
+                (input)="_handleInput(parts.controls.valorPorcentaje, porcentajeInput)"
+                (blur)="validarPorcentaje()"
+                #porcentajeInput
+                DecimalFormatterDirective>
+       
+        <span class="input-spacer">%</span>
+        <span class="input-spacer pl-2">&vert;</span>
+        <input class="input-element  col-5 col-md-6 col-lg-6 p-0  ml-1"
+                matInput 
+                type ="number"
+                formControlName="valorNominal"
+                maxLength="250"
+                style="text-align:right;"
+                aria-label="Nominal"
+                [disabled]="true"
+                (input)="_handleInput(parts.controls.valorNominal)"
+                #nominalInput 
+                readonly
+                DecimalFormatterDirective>
+
+      
+        
+</div>

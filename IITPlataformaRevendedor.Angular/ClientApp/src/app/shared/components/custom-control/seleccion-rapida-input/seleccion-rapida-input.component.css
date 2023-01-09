@@ -1,0 +1,148 @@
+
+  .input-spacer {
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+  
+  :host.input-floating .input-spacer {
+    opacity: 1;
+  }
+  
+  .input-cargando-flotante {
+  
+    position: absolute;
+    top: 3px;
+    right: 0px;
+  
+  }
+  .matAutocomplete-margin {
+    margin-top: 12px !important;
+  
+  }
+  .mat-option {
+    height: auto !important;    
+    line-height: 1.5 !important;
+  }
+  .seleccion-rapida-active {
+
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    background-color: #1772b8 !important;
+  }
+  .seleccion-rapida-disabled {
+
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    background-color: #bbb !important;
+    border-color: #bbb !important;
+    color: #fff !important;
+  }
+  
+  :host ::ng-deep .mat-raised-button
+  {
+     padding:  0;
+  }
+  /*
+####################################################
+M E D I A  Q U E R I E S
+####################################################
+*/
+/* Small devices (landscape phones, 320px and up) */
+@media (min-width: 320px) {  
+
+  .seleccion-rapida-active {
+
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    
+  }
+  .seleccion-rapida-disabled {
+
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+   
+  }
+  
+}
+
+/* Small devices (landscape phones, 544px and up) */
+@media (min-width: 544px) {  
+
+  .seleccion-rapida-active {
+
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    
+  }
+  .seleccion-rapida-disabled {
+
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+   
+  }
+}
+ 
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) { 
+
+ .seleccion-rapida-active {
+
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    
+  }
+  .seleccion-rapida-disabled {
+
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+   
+  }
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+ .seleccion-rapida-active {
+
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    
+  }
+  .seleccion-rapida-disabled {
+
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+   
+  }
+}
+ 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  
+ 
+  .seleccion-rapida-active {
+
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    
+  }
+  .seleccion-rapida-disabled {
+
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+   
+  }
+
+}
+

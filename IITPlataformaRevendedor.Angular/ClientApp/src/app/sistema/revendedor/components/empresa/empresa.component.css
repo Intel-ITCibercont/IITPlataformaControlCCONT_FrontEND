@@ -1,0 +1,14 @@
+.btn-buscar{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 0px;
+    margin: 0px;
+    color: #1772b8
+}
+.btn-buscar.mat-raised-button{
+    line-height: 26px !important
+}
+.btn-buscar.mat-raised-button:not([class*='mat-elevation-z']){
+    box-shadow: none !important
+}

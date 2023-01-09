@@ -1,0 +1,133 @@
+@use '@angular/material' as mat;
+@include mat.core();
+@import '@angular/material/_theming.scss';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+
+
+// Paleta de colores de Cibercont - Azul
+$mat-cibercont-azul: (
+    50 : #e3eef6,
+    100 : #b9d5ea,
+    200 : #8bb9dc,
+    300 : #5d9ccd,
+    400 : #3a87c3,
+    500 : #1772b8,
+    600 : #146ab1,
+    700 : #115fa8,
+    800 : #0d55a0,
+    900 : #074291,
+    A100 : #bed6ff,
+    A200 : #8bb6ff,
+    A400 : #5896ff,
+    A700 : #3f86ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+// Paleta de colores de Cibercont - Azul v2
+$mat-cibercont-azul-s: (
+    50 : #e0f1f9,
+    100 : #b3dcef,
+    200 : #80c5e5,
+    300 : #4dadda,
+    400 : #269cd2,
+    500 : #008aca,
+    600 : #0082c5,
+    700 : #0077bd,
+    800 : #006db7,
+    900 : #005aab,
+    A100 : #d4e8ff,
+    A200 : #a1cdff,
+    A400 : #6eb1ff,
+    A700 : #55a4ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+// Paleta de colores de Cibercont - Verde
+$mat-cibercont-verde: (
+    50 : #e5f5ed,
+    100 : #bde5d3,
+    200 : #91d4b6,
+    300 : #65c299,
+    400 : #44b583,
+    500 : #23a86d,
+    600 : #1fa065,
+    700 : #1a975a,
+    800 : #158d50,
+    900 : #0c7d3e,
+    A100 : #adffce,
+    A200 : #7affaf,
+    A400 : #47ff90,
+    A700 : #2eff81,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$cibercont-app-primary: mat.define-palette($mat-cibercont-azul,500);
+$cibercont-app-accent:  mat.define-palette($mat-cibercont-verde, 600);
+
+// The warn palette is optional (defaults to red).
+$cibercont-app-warn:    mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as `color` or `typography`.
+$cibercont-app-theme: mat.define-light-theme(
+  
+  $cibercont-app-primary,
+  $cibercont-app-accent,
+  $cibercont-app-warn,
+
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($cibercont-app-theme);

@@ -1,0 +1,39 @@
+.btn-principal {
+    background-color: #fff;
+    color: #17b8ae;
+    border: solid 2px #17b8ae;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-principal-access:hover {
+    background-color: #17b8ae;
+    color: #fff;
+}
+
+.dx-data-container {
+    height: 'calc(100vh-300px)' !important;
+}
+
+::ng-deep #progress-bar-status {
+    display: inline-block;
+}
+
+::ng-deep .complete .dx-progressbar-range {
+    background-color: green;
+}
+
+.alto-porcentaje {
+    color: red;
+    font-size: 0.8rem;
+}
+
+.bajo-porcentaje {
+    color: orange;
+    font-size: 0.8rem;
+}
+
+.medio-porcentaje {
+    color: #17b8ae;
+    font-size: 0.8rem;
+}

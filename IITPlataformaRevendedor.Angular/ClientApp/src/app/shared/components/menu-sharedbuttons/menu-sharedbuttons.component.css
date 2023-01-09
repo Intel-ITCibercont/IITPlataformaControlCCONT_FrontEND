@@ -1,0 +1,23 @@
+/* Estilo para que el mat-panel-content sea transparente*/
+::ng-deep .shared{
+  background-color: transparent !important;
+}
+/* Estilo para que share-buttons se muestre en columna*/
+
+::ng-deep  share-button.sb-button {
+  padding: 0.05rem !important;
+  margin: 0.05rem !important;
+}
+.share .mat-menu-panel {
+    background-color: transparent !important;
+ }
+.btn-share-document{
+  background-color: white;
+  color: #1772b8
+}
+.sb-messenger {
+background-color: #1772b8 !important;
+}
+.sb-icon{
+  background-color: #1772b8 !important;
+}

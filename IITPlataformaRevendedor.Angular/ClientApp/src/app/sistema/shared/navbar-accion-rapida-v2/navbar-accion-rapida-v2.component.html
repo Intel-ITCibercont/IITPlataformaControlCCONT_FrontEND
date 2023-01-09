@@ -1,0 +1,12 @@
+<div class="col-12 p-0">
+<!-- <div class="col-4 p-"> -->
+    <a  [routerLink]="[accionRapida.ruta]"
+        routerLinkActive="quick-access-activo"
+        class="btn btn-quick-access btn-block p-2"
+        matTooltip={{accionRapida.toolTip}}>
+        <i class="fa-2x"
+            class={{accionRapida.icon}}
+            aria-hidden="true"></i>
+        <p class="small pt-1"> {{accionRapida.nombre}}</p>
+    </a>
+</div>

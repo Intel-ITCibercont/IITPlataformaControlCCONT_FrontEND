@@ -1,0 +1,14 @@
+.text-message {
+
+   font-size: 1rem;
+   font-weight: bold;
+}
+.bg-alert {
+
+   background-color:  #008aca ;
+}
+.text-alert {
+
+   color : #17b8ae
+}
+

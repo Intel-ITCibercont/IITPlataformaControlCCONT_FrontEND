@@ -1,0 +1,71 @@
+
+<!-- #region Cabecera -->
+
+<!-- #endregion Cabecera -->
+<div class="container-fluid"> 
+  <div class="row my-2"> 
+    <div class="col-3 px-1 text-left">
+      <span class="font-weight-bold d-none">{{fileName}}</span>
+    </div>
+   
+    <div class="col-9 px-1 d-flex justify-content-end">
+      <button
+            mat-icon-button
+            class="mx-1  btn-create d-inline d-md-none"
+            (click)="download()">  
+            <mat-icon class="icon-extra-small"
+                      color="primary">download</mat-icon>
+      </button>
+      <button
+            mat-icon-button
+            class="mx-1 px-0 btn-create d-inline d-md-none"
+            (click)="print()">  
+            <mat-icon class="icon-extra-small" 
+                      color="primary" >print</mat-icon>
+      </button>
+      <button
+            mat-raised-button
+            class="mx-1  btn-create d-none d-md-inline"
+            (click)="download()">  
+            <mat-icon class="icon-extra-small"
+                      color="primary">download</mat-icon>
+            <span class="d-none d-md-inline">Descargar</span>      
+      </button>
+      <button
+            mat-raised-button
+            class="mx-1 px-0 btn-create d-none d-md-inline"
+            (click)="print()">  
+            <mat-icon class="icon-extra-small" 
+                      color="primary" >print</mat-icon>
+            <span class="d-none d-md-inline">Imprimir</span>      
+      </button>
+      <!-- <app-cibercont-menu-sharedbuttons class=""></app-cibercont-menu-sharedbuttons> -->
+      <button
+          mat-icon-button
+          color="primary"
+          class=""
+          (click)="closeWindow()">  
+          <mat-icon class="icon-extra-small">close</mat-icon>
+          <span class="d-none ">Cerrar</span>      
+      </button>
+    </div>
+  </div>
+  <div class="row"> 
+    <div class="col-12 px-0 contenedor-pdf-viewer">
+        <pdf-viewer
+            [src]="pdfSrc"
+            [zoom]="1"
+            [autoresize]="true"
+            [original-size]="true"
+            [fit-to-page]="true"
+            #pdfViewer
+      ></pdf-viewer>
+      <!-- <div class="output-pdf-viewer">
+       
+      </div> -->
+      
+    </div>
+  </div>
+</div>
+
+

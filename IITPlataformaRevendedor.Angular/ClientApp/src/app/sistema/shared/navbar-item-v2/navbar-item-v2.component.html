@@ -1,0 +1,10 @@
+<mat-list-option class="cibercont-module" (click)="navegar(option.ruta)" routerLinkActive="menu-activo">
+    <div class="row d-flex align-items-center justify-content-start"> 
+        <i class="fa-fw fa-2x"
+            class={{option.icon}}
+            routerLinkActive="menu-icono"></i>
+        <span class="align-text-bottom text-menu">
+                {{option.nombre}}
+        </span>
+    </div>
+</mat-list-option>

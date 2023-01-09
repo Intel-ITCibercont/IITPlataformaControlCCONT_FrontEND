@@ -1,0 +1,18 @@
+<img    [ngClass]="{'img-x1': escala=='x1',
+                    'img-x2': escala=='x2',
+                    'img-x3': escala=='x3',
+                    'img-x4': escala=='x4',
+                    'img-x5': escala=='x5'}" 
+        class=""
+        src="assets/img/logo.gif" 
+        alt="Cargando">    
+
+<p  *ngIf="mostrarTexto"
+    [ngClass]="{'text-x1': escala=='x1',
+                'text-x2': escala=='x2',
+                'text-x3': escala=='x3',
+                'text-x4': escala=='x4',
+                'text-x5': escala=='x5'}" 
+    class="pb-0">
+    Procesando...
+</p>
